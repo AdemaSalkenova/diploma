@@ -93,14 +93,14 @@ export default function Footer() {
         </div>
 
         
-        <div className="flex gap-4 items-center">
+        {/* <div className="flex gap-4 items-center">
           <Image src="/payments/dpay.png" alt="DPay" width={40} height={25} />
           <Image src="/payments/visa.png" alt="Visa" width={40} height={25} />
           <Image src="/payments/mastercard.png" alt="Mastercard" width={40} height={25} />
           <Image src="/payments/applepay.png" alt="Apple Pay" width={40} height={25} />
           <Image src="/payments/googlepay.png" alt="Google Pay" width={40} height={25} />
           <Image src="/payments/amex.png" alt="Amex" width={40} height={25} />
-        </div>
+        </div> */}
       </div>
     </footer>
   );
