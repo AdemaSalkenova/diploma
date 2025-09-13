@@ -1,23 +1,21 @@
 //поиск
-"use client";
-import { useSearchParams } from "next/navigation";
-import Link from "next/link";
+// app/search/page.jsx
+export default function SearchPage({ searchParams }) {
+  const query = searchParams.query?.toLowerCase() || "";
 
-const products = [
-  { id: 1, name: "Hobo Small", price: 195, image: "/image 3.png", category: "tote bags" },
-  { id: 2, name: "Bo Soft Strap", price: 365, image: "/image 4.png", category: "tote bags" },
-  { id: 3, name: "Hobo Large", price: 615, image: "/image 5.png", category: "tote bags" },
-  { id: 3, name: "Hobo Small", price: 195, image: "/image 7.png", category: "tote bags" },
-  { id: 4, name: "Storm!", price: 195, oldPrice: 545, image: "/image 8.png", category: "tote bags" },
-  { id: 3, name: "Bo Soft Strap", price: 365, image: "/image 9.png", category: "tote bags" },
-];
+  const products = [
+    { id: 1, name: "Hobo Small", price: 195, image: "/image 3.png", category: "tote bags" },
+    { id: 2, name: "Bo Soft Strap", price: 365, image: "/image 4.png", category: "tote bags" },
+    { id: 3, name: "Hobo Large", price: 615, image: "/image 5.png", category: "tote bags" },
+    { id: 4, name: "Hobo Small", price: 195, image: "/image 7.png", category: "tote bags" },
+    { id: 5, name: "Storm!", price: 195, oldPrice: 545, image: "/image 8.png", category: "tote bags" },
+    { id: 6, name: "Bo Soft Strap", price: 365, image: "/image 9.png", category: "tote bags" },
+  ];
 
-export default function SearchPage() {
-  const searchParams = useSearchParams();
-  const query = searchParams.get("query")?.toLowerCase() || "";
-
-  const filtered = products.filter((p) =>
-    p.category.toLowerCase().includes(query) || p.name.toLowerCase().includes(query)
+  const filtered = products.filter(
+    (p) =>
+      p.category.toLowerCase().includes(query) ||
+      p.name.toLowerCase().includes(query)
   );
 
   return (
@@ -67,13 +65,19 @@ export default function SearchPage() {
             <h3 style={{ fontSize: "16px", marginTop: "10px" }}>{p.name}</h3>
             <p style={{ fontSize: "14px", color: "#444" }}>
               {p.oldPrice && (
-                <span style={{ textDecoration: "line-through", marginRight: "8px", color: "#999" }}>
+                <span
+                  style={{
+                    textDecoration: "line-through",
+                    marginRight: "8px",
+                    color: "#999",
+                  }}
+                >
                   ${p.oldPrice}
                 </span>
               )}
               ${p.price}
             </p>
-            <Link
+            <a
               href={`/product/${p.id}`}
               style={{
                 display: "inline-block",
@@ -86,7 +90,7 @@ export default function SearchPage() {
               }}
             >
               View
-            </Link>
+            </a>
           </div>
         ))}
       </div>
